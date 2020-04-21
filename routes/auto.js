@@ -29,4 +29,17 @@ router.delete('/auto/:id', (req, res) => {
   )
 });
 
+router.get('/auto/:id', (req, res) => {
+  Auto.findById({_id: req.params.id}).then((auto) => {
+    return res.json(auto)
+  });
+});
+
+router.put('/auto/:id', (req,res) => {
+  Auto.findById({ _id: req.params.id}).then(( auto) => {
+    auto.service = req.body.service ? req.body.service : auto.service;
+    auto.save().then((auto) => res.json(auto));
+  });
+});
+
 module.exports = router;
