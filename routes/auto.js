@@ -21,6 +21,12 @@ router.get('/autos',(req,res) => {
     autos.reverse();
     return res.json(autos);
   })
-}
-)
+});
+
+router.delete('/auto/:id', (req, res) => {
+  Auto.findByIdAndDelete({_id: req.params.id}).then (
+    res.json({message: 'deleted'})
+  )
+});
+
 module.exports = router;
