@@ -11,6 +11,12 @@ router.get('/', function(req, res, next) {
 router.post('/auto', (req,res) => {
   const newAuto = new Auto();
   newAuto.service = req.body.service;
+  newAuto.name = req.body.name;
+  newAuto.city = req.body.city;
+  newAuto.price = req.body.price;
+  newAuto.address = req.body.address;
+  newAuto.phone = req.body.phone;
+  newAuto.website = req.body.website;
   newAuto.save().then((auto) => {
     return res.json(auto)
   });
