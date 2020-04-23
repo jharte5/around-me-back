@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const AutoRouter = require('./routes/auto');
+const autoRouter = require('./routes/auto');
 
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', AutoRouter);
+app.use('/', autoRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
