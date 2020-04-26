@@ -29,11 +29,11 @@ router.get('/autos',(req,res) => {
   })
 });
 
-router.delete('/auto/:id', (req, res) => {
-  Auto.findByIdAndDelete({_id: req.params.id}).then (
-    res.json({message: 'deleted'})
-  )
-});
+// router.delete('/auto/:id', (req, res) => {
+//   Auto.findByIdAndDelete({_id: req.params.id}).then (
+//     res.json({message: 'deleted'})
+//   )
+// });
 
 router.get('/auto/:id', (req, res) => {
   Auto.findById({_id: req.params.id}).then((auto) => {
@@ -44,6 +44,12 @@ router.get('/auto/:id', (req, res) => {
 router.put('/auto/:id', (req,res) => {
   Auto.findById({ _id: req.params.id}).then(( auto) => {
     auto.service = req.body.service ? req.body.service : auto.service;
+    auto.name = req.body.name ? req.body.name : auto.name;
+    auto.city = req.body.city ? req.body.city : auto.city;
+    auto.price = req.body.price ? req.body.price : auto.price;
+    auto.address = req.body.address ? req.body.address : auto.address;
+    auto.phone = req.body.phone ? req.body.phone : auto.phone;
+    auto.website = req.body.website ? req.body.website : auto.website;
     auto.save().then((auto) => res.json(auto));
   });
 });
